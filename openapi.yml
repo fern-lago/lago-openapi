@@ -1,12 +1,12 @@
 openapi: 3.0.1
 info:
-  title: api
+  title: Lago API
   version: ''
 paths:
   add_ons:
     post:
       description: Create a new add-on
-      operationId: addOnsService.createAddOn
+      operationId: addOnsService.create
       tags:
         - AddOns
       parameters: []
@@ -28,7 +28,7 @@ paths:
               $ref: '#/components/schemas/AddOnInput'
     get:
       description: Find all add-ons in certain organisation
-      operationId: addOnsService.findAllAddOns
+      operationId: addOnsService.find
       tags:
         - AddOns
       parameters:
@@ -56,7 +56,7 @@ paths:
   add_ons/{code}:
     get:
       description: Return a single add-on
-      operationId: addOnsService.findAddOn
+      operationId: addOnsService.get
       tags:
         - AddOns
       parameters:
@@ -77,7 +77,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing add-on by code
-      operationId: addOnsService.updateAddOn
+      operationId: addOnsService.update
       tags:
         - AddOns
       parameters:
@@ -104,7 +104,7 @@ paths:
               $ref: '#/components/schemas/AddOnInput'
     delete:
       description: Delete an add-on
-      operationId: addOnsService.destroyAddOn
+      operationId: addOnsService.destroy
       tags:
         - AddOns
       parameters:
@@ -126,7 +126,7 @@ paths:
   applied_add_ons:
     post:
       description: Apply an add-on to a customer
-      operationId: addOnsService.applyAddOn
+      operationId: addOnsService.apply
       tags:
         - AddOns
       parameters: []
@@ -144,11 +144,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppliedAddOnInput'
+              type: object
+              properties:
+                applied_add_on:
+                  $ref: '#/components/schemas/AppliedAddOnInputObject'
   /billable_metrics:
     post:
       description: Create a new billable metric
-      operationId: billableMetricsService.createBillableMetric
+      operationId: billableMetricsService.create
       tags:
         - BillableMetrics
       parameters: []
@@ -169,7 +172,7 @@ paths:
               $ref: '#/components/schemas/BillableMetricInput'
     get:
       description: Find all billable metrics in certain organisation
-      operationId: billableMetricsService.findAllBillableMetrics
+      operationId: billableMetricsService.findMetrics
       tags:
         - BillableMetrics
       parameters:
@@ -197,7 +200,7 @@ paths:
   /billable_metrics/{code}:
     get:
       description: Return a single billable metric
-      operationId: billableMetricsService.findBillableMetric
+      operationId: billableMetricsService.get
       tags:
         - BillableMetrics
       parameters:
@@ -218,7 +221,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing billable metric by code
-      operationId: billableMetricsService.updateBillableMetric
+      operationId: billableMetricsService.update
       tags:
         - BillableMetrics
       parameters:
@@ -245,7 +248,7 @@ paths:
               $ref: '#/components/schemas/BillableMetricInput'
     delete:
       description: Delete a billable metric
-      operationId: billableMetricsService.destroyBillableMetric
+      operationId: billableMetricsService.destroy
       tags:
         - BillableMetrics
       parameters:
@@ -267,7 +270,7 @@ paths:
   /billable_metrics/{code}/groups:
     get:
       description: Find all billable metric groups in certain organisation
-      operationId: billableMetricsService.findAllBillableMetricGroups
+      operationId: billableMetricsService.findMetricGroups
       tags:
         - BillableMetrics
       parameters:
@@ -301,7 +304,7 @@ paths:
   coupons:
     post:
       description: Create a new coupon
-      operationId: couponsService.createCoupon
+      operationId: couponsService.create
       tags:
         - Coupons
       parameters: []
@@ -322,7 +325,7 @@ paths:
               $ref: '#/components/schemas/CouponInput'
     get:
       description: Find all coupons in certain organisation
-      operationId: couponsService.findAllCoupons
+      operationId: couponsService.find
       tags:
         - Coupons
       parameters:
@@ -350,7 +353,7 @@ paths:
   coupons/{code}:
     get:
       description: Return a single coupon
-      operationId: couponsService.findCoupon
+      operationId: couponsService.get
       tags:
         - Coupons
       parameters:
@@ -371,7 +374,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing coupon by code
-      operationId: couponsService.updateCoupon
+      operationId: couponsService.update
       tags:
         - Coupons
       parameters:
@@ -398,7 +401,7 @@ paths:
               $ref: '#/components/schemas/CouponInput'
     delete:
       description: Delete a coupon
-      operationId: couponsService.destroyCoupon
+      operationId: couponsService.destroy
       tags:
         - Coupons
       parameters:
@@ -420,7 +423,7 @@ paths:
   applied_coupons:
     post:
       description: Apply a coupon to a customer
-      operationId: couponsService.applyCoupon
+      operationId: couponsService.apply
       tags:
         - Coupons
       parameters: []
@@ -481,7 +484,7 @@ paths:
   /credit_notes:
     post:
       description: Create a new credit note
-      operationId: creditNotesService.createCreditNote
+      operationId: creditNotesService.create
       tags:
         - CreditNotes
       parameters: []
@@ -502,7 +505,7 @@ paths:
               $ref: '#/components/schemas/CreditNoteInput'
     get:
       description: Find all credit notes in certain organisation
-      operationId: creditNotesService.findAllCreditNotes
+      operationId: creditNotesService.find
       tags:
         - CreditNotes
       parameters:
@@ -536,7 +539,7 @@ paths:
   /credit_notes/{id}:
     get:
       description: Return a single credit note
-      operationId: creditNotesService.findCreditNote
+      operationId: creditNotesService.get
       tags:
         - CreditNotes
       parameters:
@@ -557,7 +560,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing credit note
-      operationId: creditNotesService.updateCreditNote
+      operationId: creditNotesService.update
       tags:
         - CreditNotes
       parameters:
@@ -585,7 +588,7 @@ paths:
   /credit_notes/{id}/download:
     post:
       description: Download an existing credit note
-      operationId: creditNotesService.downloadCreditNote
+      operationId: creditNotesService.download
       tags:
         - CreditNotes
       parameters:
@@ -629,7 +632,7 @@ paths:
   /customers:
     post:
       description: Create a new customer
-      operationId: customersService.createCustomer
+      operationId: customersService.create
       tags:
         - Customers
       parameters: []
@@ -650,7 +653,7 @@ paths:
               $ref: '#/components/schemas/CustomerInput'
     get:
       description: Find all customers in certain organisation
-      operationId: customersService.findAllCustomers
+      operationId: customersService.find
       tags:
         - Customers
       parameters:
@@ -678,7 +681,7 @@ paths:
   /customers/{external_id}:
     get:
       description: Return a single customer
-      operationId: customersService.findCustomer
+      operationId: customersService.get
       tags:
         - Customers
       parameters:
@@ -700,7 +703,7 @@ paths:
   /customers/{customer_external_id}/current_usage:
     get:
       description: Return a customer current usage
-      operationId: customersService.findCustomerCurrentUsage
+      operationId: customersService.getCurrentUsage
       tags:
         - Customers
       parameters:
@@ -728,7 +731,7 @@ paths:
   /events:
     post:
       description: Create a new event
-      operationId: eventsService.createEvent
+      operationId: eventsService.create
       tags:
         - Events
       parameters: []
@@ -764,7 +767,7 @@ paths:
   /events/{id}:
     get:
       description: Return a single event
-      operationId: eventsService.findEvent
+      operationId: eventsService.get
       tags:
         - Events
       parameters:
@@ -786,7 +789,7 @@ paths:
   /invoices/{id}:
     get:
       description: Return a single invoice
-      operationId: invoicesService.findInvoice
+      operationId: invoicesService.get
       tags:
         - Invoices
       parameters:
@@ -807,7 +810,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing invoice
-      operationId: invoicesService.updateInvoice
+      operationId: invoicesService.update
       tags:
         - Invoices
       parameters:
@@ -835,7 +838,7 @@ paths:
   /invoices/{id}/download:
     post:
       description: Download an existing invoice
-      operationId: invoicesService.downloadInvoice
+      operationId: invoicesService.download
       tags:
         - Invoices
       parameters:
@@ -897,7 +900,7 @@ paths:
   /invoices/{id}/finalize:
     put:
       description: Finalize a draft invoice
-      operationId: invoicesService.finalizeInvoice
+      operationId: invoicesService.finalize
       tags:
         - Invoices
       parameters:
@@ -919,7 +922,7 @@ paths:
   /invoices:
     get:
       description: Find all invoices in certain organisation
-      operationId: invoicesService.findAllInvoices
+      operationId: invoicesService.find
       tags:
         - Invoices
       parameters:
@@ -967,7 +970,7 @@ paths:
   /organizations:
     put:
       description: Update an existing organization
-      operationId: organizationsService.updateOrganization
+      operationId: organizationsService.update
       tags:
         - Organizations
       parameters: []
@@ -989,7 +992,7 @@ paths:
   /plans:
     post:
       description: Create a new plan
-      operationId: plansService.createPlan
+      operationId: plansService.create
       tags:
         - Plans
       parameters: []
@@ -1010,7 +1013,7 @@ paths:
               $ref: '#/components/schemas/PlanInput'
     get:
       description: Find all plans in certain organisation
-      operationId: plansService.findAllPlans
+      operationId: plansService.find
       tags:
         - Plans
       parameters:
@@ -1038,7 +1041,7 @@ paths:
   /plans/{code}:
     get:
       description: Return a single plan
-      operationId: plansService.findPlan
+      operationId: plansService.get
       tags:
         - Plans
       parameters:
@@ -1059,7 +1062,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing plan by code
-      operationId: plansService.updatePlan
+      operationId: plansService.update
       tags:
         - Plans
       parameters:
@@ -1086,7 +1089,7 @@ paths:
               $ref: '#/components/schemas/PlanInput'
     delete:
       description: Delete a plan
-      operationId: plansService.destroyPlan
+      operationId: plansService.destroy
       tags:
         - Plans
       parameters:
@@ -1108,7 +1111,7 @@ paths:
   /subscriptions:
     post:
       description: Assign a plan to a customer
-      operationId: subscriptionsService.createSubscription
+      operationId: subscriptionsService.create
       tags:
         - Subscriptions
       parameters: []
@@ -1129,7 +1132,7 @@ paths:
               $ref: '#/components/schemas/SubscriptionCreateInput'
     get:
       description: Find all suscriptions for certain customer
-      operationId: subscriptionsService.findAllSubscriptions
+      operationId: subscriptionsService.find
       tags:
         - Subscriptions
       parameters:
@@ -1163,7 +1166,7 @@ paths:
   /subscriptions/{external_id}:
     put:
       description: Update an existing subscription by external ID
-      operationId: subscriptionsService.updateSubscription
+      operationId: subscriptionsService.update
       tags:
         - Subscriptions
       parameters:
@@ -1190,7 +1193,7 @@ paths:
               $ref: '#/components/schemas/SubscriptionUpdateInput'
     delete:
       description: Terminate a subscription
-      operationId: subscriptionsService.destroySubscription
+      operationId: subscriptionsService.delete
       tags:
         - Subscriptions
       parameters:
@@ -1212,7 +1215,7 @@ paths:
   wallets:
     post:
       description: Create a new wallet
-      operationId: walletsService.createWallet
+      operationId: walletsService.create
       tags:
         - Wallets
       parameters: []
@@ -1233,7 +1236,7 @@ paths:
               $ref: '#/components/schemas/WalletInput'
     get:
       description: Find all wallets for certain customer
-      operationId: walletsService.findAllWallets
+      operationId: walletsService.find
       tags:
         - Wallets
       parameters:
@@ -1267,7 +1270,7 @@ paths:
   wallets/{id}:
     get:
       description: Return a wallet
-      operationId: walletsService.findWallet
+      operationId: walletsService.get
       tags:
         - Wallets
       parameters:
@@ -1288,7 +1291,7 @@ paths:
       security: *ref_0
     put:
       description: Update an existing wallet
-      operationId: walletsService.updateWallet
+      operationId: walletsService.update
       tags:
         - Wallets
       parameters:
@@ -1315,7 +1318,7 @@ paths:
               $ref: '#/components/schemas/WalletUpdateInput'
     delete:
       description: Delete a wallet
-      operationId: walletsService.destroyWallet
+      operationId: walletsService.destroy
       tags:
         - Wallets
       parameters:
@@ -1359,7 +1362,7 @@ paths:
   wallets/{id}/wallet_transactions:
     get:
       description: Find all wallet transactions for certain wallet
-      operationId: walletsService.findAllWalletTransactions
+      operationId: walletsService.findWalletTransactions
       tags:
         - Wallets
       parameters:
@@ -1402,18 +1405,6 @@ paths:
                 $ref: '#/components/schemas/WalletTransactions'
       summary: Find wallet transactions
       security: *ref_0
-  /webhooks/public_key:
-    get:
-      description: Webhook public key
-      operationId: webhooksService.fetchPublicKey
-      tags:
-        - Webhooks
-      parameters: []
-      responses:
-        '204':
-          description: ''
-      summary: Fetch webhook public key
-      security: *ref_0
 components:
   schemas:
     AddOns:
@@ -1423,17 +1414,52 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AddOnObject'
-    AppliedAddOnInput:
-      type: object
-      properties:
-        applied_add_on:
-          $ref: '#/components/schemas/AppliedAddOnInputObject'
     AppliedAddOnInputObject:
       type: object
       properties:
         external_customer_id:
           type: string
         add_on_code:
+          type: string
+        amount_cents:
+          type: integer
+        amount_currency:
+          type: string
+    AddOnInput:
+      type: object
+      properties:
+        add_on:
+          $ref: '#/components/schemas/AddOnInputObject'
+    AddOnInputObject:
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        amount_cents:
+          type: integer
+        amount_currency:
+          type: string
+    AddOn:
+      type: object
+      properties:
+        add_on:
+          $ref: '#/components/schemas/AddOnObject'
+    AddOnObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        name:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        created_at:
           type: string
         amount_cents:
           type: integer
@@ -1491,14 +1517,6 @@ components:
       properties:
         billable_metric:
           $ref: '#/components/schemas/BillableMetricInputObject'
-    AggregationType:
-      type: string
-      enum:
-        - count_agg
-        - sum_agg
-        - max_agg
-        - unique_count_agg
-        - recurring_count_agg
     BillableMetricInputObject:
       type: object
       properties:
@@ -1550,46 +1568,97 @@ components:
           type: integer
         draft_invoices_count:
           type: integer
-    AddOnInput:
-      type: object
-      properties:
-        add_on:
-          $ref: '#/components/schemas/AddOnInputObject'
-    AddOnInputObject:
-      type: object
-      properties:
-        name:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
-        amount_cents:
-          type: integer
-        amount_currency:
-          type: string
-    AddOn:
-      type: object
-      properties:
-        add_on:
-          $ref: '#/components/schemas/AddOnObject'
-    AddOnObject:
+    BillingTime:
+      type: string
+      enum:
+        - calendar
+        - anniversary
+    FeeObject:
       type: object
       properties:
         lago_id:
           type: string
-        name:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
-        created_at:
+        lago_group_id:
           type: string
         amount_cents:
           type: integer
         amount_currency:
           type: string
+        vat_amount_cents:
+          type: integer
+        vat_amount_currency:
+          type: string
+        units:
+          type: number
+          format: double
+        events_count:
+          type: integer
+        item:
+          $ref: '#/components/schemas/FeeItem'
+    FeeItem:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/BillingTime'
+        code:
+          type: string
+        name:
+          type: string
+    AggregationType:
+      type: string
+      enum:
+        - count_agg
+        - sum_agg
+        - max_agg
+        - unique_count_agg
+        - recurring_count_agg
+    Coupons:
+      type: object
+      properties:
+        coupons:
+          type: array
+          items:
+            $ref: '#/components/schemas/CouponObject'
+    AppliedCouponInput:
+      type: object
+      properties:
+        applied_coupon:
+          $ref: '#/components/schemas/AppliedCouponInputObject'
+    AppliedCouponInputObject:
+      type: object
+      properties:
+        external_customer_id:
+          type: string
+        coupon_code:
+          type: string
+        frequency:
+          $ref: '#/components/schemas/FrequencyType'
+        frequency_duration:
+          type: integer
+        amount_cents:
+          type: integer
+        amount_currency:
+          type: string
+        percentage_rate:
+          type: number
+          format: double
+    AppliedCoupon:
+      type: object
+      properties:
+        applied_coupon:
+          $ref: '#/components/schemas/AppliedCouponObject'
+    AppliedCoupons:
+      type: object
+      properties:
+        applied_coupons:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppliedCouponObject'
+    CouponStatus:
+      type: string
+      enum:
+        - active
+        - terminated
     CouponInput:
       type: object
       properties:
@@ -1685,7 +1754,7 @@ components:
         external_customer_id:
           type: string
         status:
-          $ref: '#/components/schemas/Status'
+          $ref: '#/components/schemas/CouponStatus'
         amount_cents:
           type: integer
         amount_cents_remaining:
@@ -1707,21 +1776,206 @@ components:
           type: string
         terminated_at:
           type: string
-    Status:
-      type: string
-      enum:
-        - active
-        - terminated
-    BillingConfigurationOrganization:
+    CreditNoteInput:
       type: object
       properties:
-        invoice_footer:
+        credit_note:
+          $ref: '#/components/schemas/CreditNoteInputObject'
+    CreditNoteReason:
+      type: string
+      enum:
+        - duplicated_charge
+        - product_unsatisfactory
+        - order_change
+        - order_cancellation
+        - fraudulent_charge
+        - other
+    CreditNoteItem:
+      type: object
+      properties:
+        fee_id:
           type: string
-        invoice_grace_period:
+        amount_cents:
           type: integer
-        vat_rate:
-          type: number
-          format: double
+    CreditNoteInputObject:
+      type: object
+      properties:
+        invoice_id:
+          type: string
+        reason:
+          $ref: '#/components/schemas/CreditNoteReason'
+        description:
+          type: string
+        credit_amount_cents:
+          type: integer
+        refund_amount_cents:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditNoteItem'
+    CreditNoteUpdateInput:
+      type: object
+      properties:
+        credit_note:
+          $ref: '#/components/schemas/CreditNoteInputObject'
+    CreditNotes:
+      type: object
+      properties:
+        credit_notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditNoteObject'
+    CreditNote:
+      type: object
+      properties:
+        credit_note:
+          $ref: '#/components/schemas/CreditNoteObject'
+    CreditNoteObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        sequential_id:
+          type: integer
+        number:
+          type: string
+        lago_invoice_id:
+          type: string
+        invoice_number:
+          type: string
+        issuing_date:
+          type: string
+        credit_status:
+          $ref: '#/components/schemas/CreditStatus'
+        refund_status:
+          $ref: '#/components/schemas/RefundStatus'
+        reason:
+          $ref: '#/components/schemas/CreditReason'
+        description:
+          type: string
+        total_amount_cents:
+          type: integer
+        total_amount_currency:
+          type: string
+        vat_amount_cents:
+          type: integer
+        vat_amount_currency:
+          type: string
+        sub_total_vat_excluded_amount_cents:
+          type: integer
+        sub_total_vat_excluded_amount_currency:
+          type: string
+        balance_amount_cents:
+          type: integer
+        balance_amount_currency:
+          type: string
+        credit_amount_cents:
+          type: integer
+        credit_amount_currency:
+          type: string
+        refund_amount_cents:
+          type: integer
+        refund_amount_currency:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        file_url:
+          type: string
+        customer:
+          $ref: '#/components/schemas/CustomerObject'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditNoteItemObject'
+    CreditStatus:
+      type: string
+      enum:
+        - available
+        - consumed
+        - voided
+    RefundStatus:
+      type: string
+      enum:
+        - pending
+        - succeeded
+        - failed
+    CreditReason:
+      type: string
+      enum:
+        - duplicated_charge
+        - product_unsatisfactory
+        - order_change
+        - order_cancellation
+        - fraudulent_charge
+        - other
+    CreditNoteItemObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        amount_cents:
+          type: integer
+        amount_currency:
+          type: string
+        fee:
+          $ref: '#/components/schemas/FeeObject'
+    CustomerInput:
+      type: object
+      properties:
+        customer:
+          $ref: '#/components/schemas/CustomerInputObject'
+    CustomerInputObject:
+      type: object
+      properties:
+        external_id:
+          type: string
+        name:
+          type: string
+        country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        state:
+          type: string
+        zipode:
+          type: string
+        email:
+          type: string
+        city:
+          type: string
+        url:
+          type: string
+        phone:
+          type: string
+        lago_url:
+          type: string
+        legal_name:
+          type: string
+        legal_number:
+          type: string
+        currency:
+          type: string
+        timezone:
+          type: string
+        billing_configuration:
+          $ref: '#/components/schemas/BillingConfigurationCustomer'
+    CustomerUsage:
+      type: object
+      properties:
+        customer_usage:
+          $ref: '#/components/schemas/CustomerUsageObject'
+    Customers:
+      type: object
+      properties:
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerObject'
     Customer:
       type: object
       properties:
@@ -1861,49 +2115,274 @@ components:
           format: double
         amount_cents:
           type: integer
-    PlanInput:
+    EventInput:
       type: object
       properties:
-        plan:
-          $ref: '#/components/schemas/PlanInputObject'
-    PlanInterval:
-      type: string
-      enum:
-        - weekly
-        - monthly
-        - yearly
-    ChargeModel:
-      type: string
-      enum:
-        - standard
-        - graduated
-        - package
-        - percentage
-        - volume
-    GroupProperties:
+        event:
+          $ref: '#/components/schemas/EventInputObject'
+    EventInputObject:
       type: object
       properties:
-        group_id:
+        transaction_id:
           type: string
-        values:
-          type: object
-          additionalProperties: {}
-    Charges:
-      type: object
-      properties:
-        id:
+        external_customer_id:
           type: string
-        billable_metric_id:
+        code:
           type: string
-        charge_model:
-          $ref: '#/components/schemas/ChargeModel'
+        timestamp:
+          type: integer
+        external_subscription_id:
+          type: string
         properties:
           type: object
           additionalProperties: {}
-        group_properties:
+    BatchEventInput:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/BatchEventInputObject'
+    BatchEventInputObject:
+      type: object
+      properties:
+        transaction_id:
+          type: string
+        external_customer_id:
+          type: string
+        code:
+          type: string
+        timestamp:
+          type: integer
+        external_subscription_ids:
           type: array
           items:
-            $ref: '#/components/schemas/GroupProperties'
+            type: string
+        properties:
+          type: object
+          additionalProperties: {}
+    Event:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/EventObject'
+    EventObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        transaction_id:
+          type: string
+        lago_customer_id:
+          type: string
+        external_customer_id:
+          type: string
+        code:
+          type: string
+        timestamp:
+          type: string
+        properties:
+          type: object
+          additionalProperties: {}
+        lago_subscription_id:
+          type: string
+        external_subscription_id:
+          type: string
+        created_at:
+          type: string
+    InvoiceInput:
+      type: object
+      properties:
+        invoice:
+          $ref: '#/components/schemas/InvoiceObject'
+    Invoices:
+      type: object
+      properties:
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceObject'
+    Invoice:
+      type: object
+      properties:
+        invoice:
+          $ref: '#/components/schemas/InvoiceObject'
+    InvoiceObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        sequential_id:
+          type: integer
+        number:
+          type: string
+        issuing_date:
+          type: string
+        invoice_type:
+          $ref: '#/components/schemas/InvoiceType'
+        status:
+          $ref: '#/components/schemas/InvoiceStatus'
+        payment_status:
+          $ref: '#/components/schemas/PaymentStatus'
+        amount_cents:
+          type: integer
+        amount_currency:
+          type: string
+        vat_amount_cents:
+          type: integer
+        vat_amount_currency:
+          type: string
+        credit_amount_cents:
+          type: integer
+        credit_amount_currency:
+          type: string
+        total_amount_cents:
+          type: integer
+        total_amount_currency:
+          type: string
+        legacy:
+          type: boolean
+        file_url:
+          type: string
+        customer:
+          $ref: '#/components/schemas/CustomerObject'
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionObject'
+        fees:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeeObject'
+        credits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditObject'
+    InvoiceStatus:
+      type: string
+      enum:
+        - draft
+        - finalized
+    PaymentStatus:
+      type: string
+      enum:
+        - pending
+        - succeeded
+        - failed
+    InvoiceType:
+      type: string
+      enum:
+        - charge
+        - add_on
+        - subscription
+        - credit
+    CreditObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        amount_cents:
+          type: integer
+        amount_currency:
+          type: string
+        item:
+          $ref: '#/components/schemas/CreditItem'
+    CreditItem:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        type:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+    OrganizationInput:
+      type: object
+      properties:
+        organization:
+          $ref: '#/components/schemas/OrganizationInputObject'
+    OrganizationInputObject:
+      type: object
+      properties:
+        webhook_url:
+          type: string
+        country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        state:
+          type: string
+        zipode:
+          type: string
+        email:
+          type: string
+        city:
+          type: string
+        legal_name:
+          type: string
+        legal_number:
+          type: string
+        timezone:
+          type: string
+        billing_configuration:
+          $ref: '#/components/schemas/BillingConfigurationOrganization'
+    Organization:
+      type: object
+      properties:
+        organization:
+          $ref: '#/components/schemas/OrganizationObject'
+    OrganizationObject:
+      type: object
+      properties:
+        lago_id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+        webhook_url:
+          type: string
+        country:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        state:
+          type: string
+        zipode:
+          type: string
+        email:
+          type: string
+        city:
+          type: string
+        legal_name:
+          type: string
+        legal_number:
+          type: string
+        timezone:
+          type: string
+        billing_configuration:
+          $ref: '#/components/schemas/BillingConfigurationOrganization'
+    BillingConfigurationOrganization:
+      type: object
+      properties:
+        invoice_footer:
+          type: string
+        invoice_grace_period:
+          type: integer
+        vat_rate:
+          type: number
+          format: double
+    Plans:
+      type: object
+      properties:
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanObject'
     PlanInputObject:
       type: object
       properties:
@@ -1992,6 +2471,88 @@ components:
         values:
           type: object
           additionalProperties: {}
+    PlanInput:
+      type: object
+      properties:
+        plan:
+          $ref: '#/components/schemas/PlanInputObject'
+    PlanInterval:
+      type: string
+      enum:
+        - weekly
+        - monthly
+        - yearly
+    ChargeModel:
+      type: string
+      enum:
+        - standard
+        - graduated
+        - package
+        - percentage
+        - volume
+    GroupProperties:
+      type: object
+      properties:
+        group_id:
+          type: string
+        values:
+          type: object
+          additionalProperties: {}
+    Charges:
+      type: object
+      properties:
+        id:
+          type: string
+        billable_metric_id:
+          type: string
+        charge_model:
+          $ref: '#/components/schemas/ChargeModel'
+        properties:
+          type: object
+          additionalProperties: {}
+        group_properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupProperties'
+    SubscriptionCreateInput:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/SubscriptionCreateInputObject'
+    SubscriptionCreateInputObject:
+      type: object
+      properties:
+        external_customer_id:
+          type: string
+        plan_code:
+          type: string
+        name:
+          type: string
+        external_id:
+          type: string
+        billing_time:
+          $ref: '#/components/schemas/BillingTime'
+        subscription_at:
+          type: string
+    SubscriptionUpdateInput:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/SubscriptionUpdateInputObject'
+    SubscriptionUpdateInputObject:
+      type: object
+      properties:
+        name:
+          type: string
+        subscription_at:
+          type: string
+    Subscriptions:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionObject'
     Subscription:
       type: object
       properties:
@@ -2039,138 +2600,66 @@ components:
         - pending
         - terminated
         - canceled
-    BillingTime:
-      type: string
-      enum:
-        - calendar
-        - anniversary
-    Invoice:
+    WalletInput:
       type: object
       properties:
-        invoice:
-          $ref: '#/components/schemas/InvoiceObject'
-    InvoiceObject:
+        wallet:
+          $ref: '#/components/schemas/WalletInputObject'
+    WalletInputObject:
       type: object
       properties:
-        lago_id:
+        name:
           type: string
-        sequential_id:
-          type: integer
-        number:
-          type: string
-        issuing_date:
-          type: string
-        invoice_type:
-          $ref: '#/components/schemas/InvoiceType'
-        status:
-          $ref: '#/components/schemas/InvoiceStatus'
-        payment_status:
-          $ref: '#/components/schemas/PaymentStatus'
-        amount_cents:
-          type: integer
-        amount_currency:
-          type: string
-        vat_amount_cents:
-          type: integer
-        vat_amount_currency:
-          type: string
-        credit_amount_cents:
-          type: integer
-        credit_amount_currency:
-          type: string
-        total_amount_cents:
-          type: integer
-        total_amount_currency:
-          type: string
-        legacy:
-          type: boolean
-        file_url:
-          type: string
-        customer:
-          $ref: '#/components/schemas/CustomerObject'
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionObject'
-        fees:
-          type: array
-          items:
-            $ref: '#/components/schemas/FeeObject'
-        credits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditObject'
-    InvoiceStatus:
-      type: string
-      enum:
-        - draft
-        - finalized
-    PaymentStatus:
-      type: string
-      enum:
-        - pending
-        - succeeded
-        - failed
-    FeeObject:
-      type: object
-      properties:
-        lago_id:
-          type: string
-        lago_group_id:
-          type: string
-        amount_cents:
-          type: integer
-        amount_currency:
-          type: string
-        vat_amount_cents:
-          type: integer
-        vat_amount_currency:
-          type: string
-        units:
+        rate_amount:
           type: number
           format: double
-        events_count:
-          type: integer
-        item:
-          $ref: '#/components/schemas/FeeItem'
-    InvoiceType:
-      type: string
-      enum:
-        - charge
-        - add_on
-        - subscription
-        - credit
-    FeeItem:
+        currency:
+          type: string
+        paid_credits:
+          type: number
+          format: double
+        granted_credits:
+          type: number
+          format: double
+        external_customer_id:
+          type: string
+        expiration_at:
+          type: string
+    WalletUpdateInput:
       type: object
       properties:
-        type:
-          $ref: '#/components/schemas/BillingTime'
-        code:
-          type: string
+        wallet:
+          $ref: '#/components/schemas/WalletUpdateInputObject'
+    WalletUpdateInputObject:
+      type: object
+      properties:
         name:
           type: string
-    CreditObject:
+        expiration_at:
+          type: string
+    Wallets:
       type: object
       properties:
-        lago_id:
-          type: string
-        amount_cents:
-          type: integer
-        amount_currency:
-          type: string
-        item:
-          $ref: '#/components/schemas/CreditItem'
-    CreditItem:
+        wallets:
+          type: array
+          items:
+            $ref: '#/components/schemas/WalletObject'
+    WalletTransactionInput:
       type: object
       properties:
-        lago_id:
+        wallet_transaction:
+          $ref: '#/components/schemas/WalletTransactionInputObject'
+    WalletTransactionInputObject:
+      type: object
+      properties:
+        wallet_id:
           type: string
-        type:
-          type: string
-        code:
-          type: string
-        name:
-          type: string
+        paid_credits:
+          type: number
+          format: double
+        granted_credits:
+          type: number
+          format: double
     Wallet:
       type: object
       properties:
@@ -2256,520 +2745,12 @@ components:
       enum:
         - inbound
         - outbound
-    CreditNote:
-      type: object
-      properties:
-        credit_note:
-          $ref: '#/components/schemas/CreditNoteObject'
-    CreditNoteObject:
-      type: object
-      properties:
-        lago_id:
-          type: string
-        sequential_id:
-          type: integer
-        number:
-          type: string
-        lago_invoice_id:
-          type: string
-        invoice_number:
-          type: string
-        issuing_date:
-          type: string
-        credit_status:
-          $ref: '#/components/schemas/CreditStatus'
-        refund_status:
-          $ref: '#/components/schemas/RefundStatus'
-        reason:
-          $ref: '#/components/schemas/CreditReason'
-        description:
-          type: string
-        total_amount_cents:
-          type: integer
-        total_amount_currency:
-          type: string
-        vat_amount_cents:
-          type: integer
-        vat_amount_currency:
-          type: string
-        sub_total_vat_excluded_amount_cents:
-          type: integer
-        sub_total_vat_excluded_amount_currency:
-          type: string
-        balance_amount_cents:
-          type: integer
-        balance_amount_currency:
-          type: string
-        credit_amount_cents:
-          type: integer
-        credit_amount_currency:
-          type: string
-        refund_amount_cents:
-          type: integer
-        refund_amount_currency:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        file_url:
-          type: string
-        customer:
-          $ref: '#/components/schemas/CustomerObject'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditNoteItemObject'
-    CreditStatus:
-      type: string
-      enum:
-        - available
-        - consumed
-        - voided
-    RefundStatus:
-      type: string
-      enum:
-        - pending
-        - succeeded
-        - failed
-    CreditReason:
-      type: string
-      enum:
-        - duplicated_charge
-        - product_unsatisfactory
-        - order_change
-        - order_cancellation
-        - fraudulent_charge
-        - other
-    CreditNoteItemObject:
-      type: object
-      properties:
-        lago_id:
-          type: string
-        amount_cents:
-          type: integer
-        amount_currency:
-          type: string
-        fee:
-          $ref: '#/components/schemas/FeeObject'
-    Coupons:
-      type: object
-      properties:
-        coupons:
-          type: array
-          items:
-            $ref: '#/components/schemas/CouponObject'
-    AppliedCouponInput:
-      type: object
-      properties:
-        applied_coupon:
-          $ref: '#/components/schemas/AppliedCouponInputObject'
-    AppliedCouponInputObject:
-      type: object
-      properties:
-        external_customer_id:
-          type: string
-        coupon_code:
-          type: string
-        frequency:
-          $ref: '#/components/schemas/FrequencyType'
-        frequency_duration:
-          type: integer
-        amount_cents:
-          type: integer
-        amount_currency:
-          type: string
-        percentage_rate:
-          type: number
-          format: double
-    AppliedCoupon:
-      type: object
-      properties:
-        applied_coupon:
-          $ref: '#/components/schemas/AppliedCouponObject'
-    AppliedCoupons:
-      type: object
-      properties:
-        applied_coupons:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppliedCouponObject'
-    CouponStatus:
-      type: string
-      enum:
-        - active
-        - terminated
-    CreditNoteInput:
-      type: object
-      properties:
-        credit_note:
-          $ref: '#/components/schemas/CreditNoteInputObject'
-    CreditNoteReason:
-      type: string
-      enum:
-        - duplicated_charge
-        - product_unsatisfactory
-        - order_change
-        - order_cancellation
-        - fraudulent_charge
-        - other
-    CreditNoteItem:
-      type: object
-      properties:
-        fee_id:
-          type: string
-        amount_cents:
-          type: integer
-    CreditNoteInputObject:
-      type: object
-      properties:
-        invoice_id:
-          type: string
-        reason:
-          $ref: '#/components/schemas/CreditNoteReason'
-        description:
-          type: string
-        credit_amount_cents:
-          type: integer
-        refund_amount_cents:
-          type: integer
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditNoteItem'
-    CreditNoteUpdateInput:
-      type: object
-      properties:
-        credit_note:
-          $ref: '#/components/schemas/CreditNoteInputObject'
-    CreditNotes:
-      type: object
-      properties:
-        credit_notes:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditNoteObject'
-    CustomerInput:
-      type: object
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerInputObject'
-    CustomerInputObject:
-      type: object
-      properties:
-        external_id:
-          type: string
-        name:
-          type: string
-        country:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        state:
-          type: string
-        zipode:
-          type: string
-        email:
-          type: string
-        city:
-          type: string
-        url:
-          type: string
-        phone:
-          type: string
-        lago_url:
-          type: string
-        legal_name:
-          type: string
-        legal_number:
-          type: string
-        currency:
-          type: string
-        timezone:
-          type: string
-        billing_configuration:
-          $ref: '#/components/schemas/BillingConfigurationCustomer'
-    CustomerUsage:
-      type: object
-      properties:
-        customer_usage:
-          $ref: '#/components/schemas/CustomerUsageObject'
-    Customers:
-      type: object
-      properties:
-        customers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerObject'
-    EventInput:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/EventInputObject'
-    EventInputObject:
-      type: object
-      properties:
-        transaction_id:
-          type: string
-        external_customer_id:
-          type: string
-        code:
-          type: string
-        timestamp:
-          type: integer
-        external_subscription_id:
-          type: string
-        properties:
-          type: object
-          additionalProperties: {}
-    BatchEventInput:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/BatchEventInputObject'
-    BatchEventInputObject:
-      type: object
-      properties:
-        transaction_id:
-          type: string
-        external_customer_id:
-          type: string
-        code:
-          type: string
-        timestamp:
-          type: integer
-        external_subscription_ids:
-          type: array
-          items:
-            type: string
-        properties:
-          type: object
-          additionalProperties: {}
-    Event:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/EventObject'
-    EventObject:
-      type: object
-      properties:
-        lago_id:
-          type: string
-        transaction_id:
-          type: string
-        lago_customer_id:
-          type: string
-        external_customer_id:
-          type: string
-        code:
-          type: string
-        timestamp:
-          type: string
-        properties:
-          type: object
-          additionalProperties: {}
-        lago_subscription_id:
-          type: string
-        external_subscription_id:
-          type: string
-        created_at:
-          type: string
-    InvoiceInput:
-      type: object
-      properties:
-        invoice:
-          $ref: '#/components/schemas/InvoiceObject'
-    Invoices:
-      type: object
-      properties:
-        invoices:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceObject'
-    OrganizationInput:
-      type: object
-      properties:
-        organization:
-          $ref: '#/components/schemas/OrganizationInputObject'
-    OrganizationInputObject:
-      type: object
-      properties:
-        webhook_url:
-          type: string
-        country:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        state:
-          type: string
-        zipode:
-          type: string
-        email:
-          type: string
-        city:
-          type: string
-        legal_name:
-          type: string
-        legal_number:
-          type: string
-        timezone:
-          type: string
-        billing_configuration:
-          $ref: '#/components/schemas/BillingConfigurationOrganization'
-    Organization:
-      type: object
-      properties:
-        organization:
-          $ref: '#/components/schemas/OrganizationObject'
-    OrganizationObject:
-      type: object
-      properties:
-        lago_id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-        webhook_url:
-          type: string
-        country:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        state:
-          type: string
-        zipode:
-          type: string
-        email:
-          type: string
-        city:
-          type: string
-        legal_name:
-          type: string
-        legal_number:
-          type: string
-        timezone:
-          type: string
-        billing_configuration:
-          $ref: '#/components/schemas/BillingConfigurationOrganization'
-    Plans:
-      type: object
-      properties:
-        plans:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlanObject'
-    SubscriptionCreateInput:
-      type: object
-      properties:
-        subscription:
-          $ref: '#/components/schemas/SubscriptionCreateInputObject'
-    SubscriptionCreateInputObject:
-      type: object
-      properties:
-        external_customer_id:
-          type: string
-        plan_code:
-          type: string
-        name:
-          type: string
-        external_id:
-          type: string
-        billing_time:
-          $ref: '#/components/schemas/BillingTime'
-        subscription_at:
-          type: string
-    SubscriptionUpdateInput:
-      type: object
-      properties:
-        subscription:
-          $ref: '#/components/schemas/SubscriptionUpdateInputObject'
-    SubscriptionUpdateInputObject:
-      type: object
-      properties:
-        name:
-          type: string
-        subscription_at:
-          type: string
-    Subscriptions:
-      type: object
-      properties:
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionObject'
-    WalletInput:
-      type: object
-      properties:
-        wallet:
-          $ref: '#/components/schemas/WalletInputObject'
-    WalletInputObject:
-      type: object
-      properties:
-        name:
-          type: string
-        rate_amount:
-          type: number
-          format: double
-        currency:
-          type: string
-        paid_credits:
-          type: number
-          format: double
-        granted_credits:
-          type: number
-          format: double
-        external_customer_id:
-          type: string
-        expiration_at:
-          type: string
-    WalletUpdateInput:
-      type: object
-      properties:
-        wallet:
-          $ref: '#/components/schemas/WalletUpdateInputObject'
-    WalletUpdateInputObject:
-      type: object
-      properties:
-        name:
-          type: string
-        expiration_at:
-          type: string
-    Wallets:
-      type: object
-      properties:
-        wallets:
-          type: array
-          items:
-            $ref: '#/components/schemas/WalletObject'
-    WalletTransactionInput:
-      type: object
-      properties:
-        wallet_transaction:
-          $ref: '#/components/schemas/WalletTransactionInputObject'
-    WalletTransactionInputObject:
-      type: object
-      properties:
-        wallet_id:
-          type: string
-        paid_credits:
-          type: number
-          format: double
-        granted_credits:
-          type: number
-          format: double
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
 servers:
-  - url: https://api.example.com
+  - url: https://api.getlago.com/api/v1
     description: Production
   - url: https://sandbox.example.com
     description: Sandbox
