@@ -17,6 +17,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddOn'
+              examples:
+                Example1:
+                  value:
+                    add_on:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: add_on_name
+                      code: add_on_code
+                      amount_cents: 5000
+                      amount_currency: USD
+                      description: description
+                      created_at: '2022-04-29T08:59:51Z'
       summary: Create a new add-on
       security: &ref_0
         - BearerAuth: []
@@ -26,8 +37,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddOnInput'
+            examples:
+              Example1:
+                value:
+                  add_on:
+                    name: add_on_name
+                    code: add_on_code
+                    amount_cents: 5000
+                    amount_currency: USD
+                    description: desc
     get:
-      description: Find all add-ons in certain organisation
+      description: Get all add-ons in certain organisation
       operationId: addOnsService.find
       tags:
         - AddOns
@@ -38,12 +58,18 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Example1:
+              value: 1
         - name: per_page
           in: query
           description: Number of records per page
           required: false
           schema:
             type: integer
+          examples:
+            Example1:
+              value: 2
       responses:
         '200':
           description: ''
@@ -51,6 +77,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddOns'
+              examples:
+                Example1:
+                  value:
+                    add_ons:
+                      - lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                        name: add_on_name
+                        code: add_on_code
+                        amount_cents: 5000
+                        amount_currency: USD
+                        description: description
+                        created_at: '2022-04-29T08:59:51Z'
       summary: Find add-ons
       security: *ref_0
   add_ons/{code}:
@@ -66,6 +103,9 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
       responses:
         '200':
           description: ''
@@ -73,6 +113,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddOn'
+              examples:
+                Example1:
+                  value:
+                    add_on:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: add_on_name
+                      code: add_on_code
+                      amount_cents: 5000
+                      amount_currency: USD
+                      description: description
+                      created_at: '2022-04-29T08:59:51Z'
       summary: Find add-on by code
       security: *ref_0
     put:
@@ -87,6 +138,9 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
       responses:
         '200':
           description: ''
@@ -94,6 +148,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddOn'
+              examples:
+                Example1:
+                  value:
+                    add_on:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: add_on_name
+                      code: add_on_code
+                      amount_cents: 5000
+                      amount_currency: USD
+                      description: description
+                      created_at: '2022-04-29T08:59:51Z'
       summary: Update an existing add-on
       security: *ref_0
       requestBody:
@@ -102,6 +167,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddOnInput'
+            examples:
+              Example1:
+                value:
+                  add_on:
+                    name: add_on_name
+                    code: add_on_code
+                    amount_cents: 5000
+                    amount_currency: USD
+                    description: desc
     delete:
       description: Delete an add-on
       operationId: addOnsService.destroy
@@ -114,6 +188,9 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
       responses:
         '200':
           description: ''
@@ -121,6 +198,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddOn'
+              examples:
+                Example1:
+                  value:
+                    add_on:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: add_on_name
+                      code: add_on_code
+                      amount_cents: 5000
+                      amount_currency: USD
+                      description: description
+                      created_at: '2022-04-29T08:59:51Z'
       summary: Delete an add-on
       security: *ref_0
   applied_add_ons:
@@ -137,6 +225,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppliedAddOn'
+              examples:
+                Example1:
+                  value:
+                    applied_add_on:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      lago_add_on_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      add_on_code: add-on-code
+                      external_customer_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+                      lago_customer_id: 99a6094e-199b-4101-896a-54e927ce7bd7
+                      amount_cents: 123
+                      amount_currency: EUR
+                      created_at: '2022-04-29T08:59:51Z'
       summary: Apply an add-on to a customer
       security: *ref_0
       requestBody:
@@ -148,6 +248,14 @@ paths:
               properties:
                 applied_add_on:
                   $ref: '#/components/schemas/AppliedAddOnInputObject'
+            examples:
+              Example1:
+                value:
+                  applied_add_on:
+                    external_customer_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+                    add_on_code: code
+                    amount_cents: 123
+                    amount_currency: EUR
   /billable_metrics:
     post:
       description: Create a new billable metric
@@ -162,6 +270,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BillableMetric'
+              examples:
+                Example1:
+                  value:
+                    billable_metric:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: bm_name
+                      code: bm_code
+                      description: description
+                      aggregation_type: sum_agg
+                      field_name: amount_sum
+                      created_at: '2022-04-29T08:59:51Z'
+                      group: {}
+                      active_subscriptions_count: 0
+                      draft_invoices_count: 0
       summary: Create a new billable metric
       security: *ref_0
       requestBody:
@@ -170,9 +292,24 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BillableMetricInput'
+            examples:
+              Example1:
+                value:
+                  billable_metric:
+                    name: bm_name
+                    code: bm_code
+                    description: description
+                    aggregation_type: sum_agg
+                    field_name: amount_sum
+                    group:
+                      key: country
+                      values:
+                        - france
+                        - italy
+                        - spain
     get:
-      description: Find all billable metrics in certain organisation
-      operationId: billableMetricsService.findMetrics
+      description: Get all billable metrics in certain organisation
+      operationId: billableMetricsService.getAll
       tags:
         - BillableMetrics
       parameters:
@@ -182,12 +319,18 @@ paths:
           required: false
           schema:
             type: integer
+          examples:
+            Example1:
+              value: 3
         - name: per_page
           in: query
           description: Number of records per page
           required: false
           schema:
             type: integer
+          examples:
+            Example1:
+              value: 2
       responses:
         '200':
           description: ''
@@ -195,6 +338,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BillableMetrics'
+              examples:
+                Example1:
+                  value:
+                    billable_metrics:
+                      - lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                        name: bm_name
+                        code: bm_code
+                        description: description
+                        aggregation_type: sum_agg
+                        field_name: amount_sum
+                        created_at: '2022-04-29T08:59:51Z'
+                        group: {}
+                        active_subscriptions_count: 0
+                        draft_invoices_count: 0
       summary: Find Billable metrics
       security: *ref_0
   /billable_metrics/{code}:
@@ -210,6 +367,9 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
       responses:
         '200':
           description: ''
@@ -217,6 +377,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BillableMetric'
+              examples:
+                Example1:
+                  value:
+                    billable_metric:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: bm_name
+                      code: bm_code
+                      description: description
+                      aggregation_type: sum_agg
+                      field_name: amount_sum
+                      created_at: '2022-04-29T08:59:51Z'
+                      group: {}
+                      active_subscriptions_count: 0
+                      draft_invoices_count: 0
       summary: Find billable metric by code
       security: *ref_0
     put:
@@ -231,6 +405,9 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
       responses:
         '200':
           description: ''
@@ -238,6 +415,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BillableMetric'
+              examples:
+                Example1:
+                  value:
+                    billable_metric:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: bm_name
+                      code: bm_code
+                      description: description
+                      aggregation_type: sum_agg
+                      field_name: amount_sum
+                      created_at: '2022-04-29T08:59:51Z'
+                      group: {}
+                      active_subscriptions_count: 0
+                      draft_invoices_count: 0
       summary: Update an existing billable metric
       security: *ref_0
       requestBody:
@@ -246,6 +437,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BillableMetricInput'
+            examples:
+              Example1:
+                value:
+                  billable_metric:
+                    name: bm_name
+                    code: bm_code
+                    description: description
+                    aggregation_type: sum_agg
+                    field_name: amount_sum
+                    group:
+                      key: country
+                      values:
+                        - france
+                        - italy
+                        - spain
     delete:
       description: Delete a billable metric
       operationId: billableMetricsService.destroy
@@ -258,6 +464,9 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
       responses:
         '200':
           description: ''
@@ -265,6 +474,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BillableMetric'
+              examples:
+                Example1:
+                  value:
+                    billable_metric:
+                      lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                      name: bm_name
+                      code: bm_code
+                      description: description
+                      aggregation_type: sum_agg
+                      field_name: amount_sum
+                      created_at: '2022-04-29T08:59:51Z'
+                      group: {}
+                      active_subscriptions_count: 0
+                      draft_invoices_count: 0
       summary: Delete a billable metric
       security: *ref_0
   /billable_metrics/{code}/groups:
@@ -280,18 +503,27 @@ paths:
           required: true
           schema:
             type: string
+          examples:
+            Example1:
+              value: code
         - name: page
           in: query
           description: Number of page
           required: false
           schema:
             type: integer
+          examples:
+            Example1:
+              value: 3
         - name: per_page
           in: query
           description: Number of records per page
           required: false
           schema:
             type: integer
+          examples:
+            Example1:
+              value: 2
       responses:
         '200':
           description: ''
@@ -299,6 +531,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Groups'
+              examples:
+                Example1:
+                  value:
+                    groups:
+                      - lago_id: b7ab2926-1de8-4428-9bcd-779314ac129b
+                        key: group_key
+                        value: group_value
       summary: Find Billable metric groups
       security: *ref_0
   coupons:
